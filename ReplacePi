@@ -1,0 +1,42 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+void helper(char s[],int start){
+    
+    int len=strlen(s);
+    
+    if(len<=1){
+        return;
+    }
+    
+    helper(s+1,start);
+    
+    if(s[start]=='p'  && s[start+1]=='i'){
+        
+        int len=strlen(s);
+        
+        for(int i=len-1;i>=start+2;i--){
+            s[i+2]=s[i];
+        }
+        
+        s[start]='3';
+        s[start+1]='.';
+        s[start+2]='1';
+        s[start+3]='4';
+        
+}
+    
+}
+
+void replacePi(char input[]){
+   return helper(input,0);
+}
+
+int main() {
+	char input[10000];
+	cin.getline(input,10000);
+	replacePi(input);
+	cout<< input<<endl;
+	return 0;
+}
